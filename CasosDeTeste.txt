@@ -1,7 +1,4 @@
 
-
-
-
         Legenda dos casos de teste
             A1=Silver       Saldos Valorizados (R$ <50.000,00 => 0%)                            
             A2=Gold         Upgrade e Saldos Valorizados (R$ 50.000,00  => 1%)          Retrocesso   (R$ <25.000,00 )
@@ -10,35 +7,102 @@
             //*NUNCA PODE OCORRER ALTERAÇÃO DE DUAS CASAS EM UMA ÚNICA OPERAÇÃO//
 
             Nome do cliente com no minimo de 3 letras 
-            B1=Nome com menos de 3 digitos
-            B2=Com mais de 3 letras
+            A1=Nome com menos de 3 digitos
+            A2=Com mais de 3 letras
             
             Numero da conta corrente tem q ser N-S N=>numero da conta com até 6 digitos  S=>Soma dos 6 digitos
-            C1=Conta com menos de 6 digitos 
-            C2=Conta com mais de 6 digitos 
-            C3=conta com 6 digitos e soma correta
-            C4=Conta com 6 digitos e soma errada
+            B1=Conta com menos de 6 digitos 
+            B2=Conta com mais de 6 digitos 
+            B3=conta com 6 digitos e soma correta
+            B4=Conta com 6 digitos e soma errada
 
 
-            Depositos nas contas
-            D A1=Deposito*0+Deposito
-            D A2=Deposito*0.1+Deposito
-            D A3=Deposito*0.025+Deposito
+
             Caso teste valido ou 
             E1=Caso valido  
             E2=Caso invalido
 
+            Saldo da conta
+            S1=0
+            S2=12.000
+            S3=51.000
+            S4=100.000
+            S5=300.000
 
+            Saque na conta
+            Q1=10
+            Q2=20.000
+
+            Deposito
+            R1=100
+            R2=600
+            R3=50.000
+
+            SomaDoSaldo&Deposito
+            K1= 50.000>K>=0
+            K2= 200.000>K>=50.000
+            K3= K>=200.000
+
+         
             Casos de teste cadastro
             
             B1C1=>E2        |"Fe" 1234-10
             B1C2=>E2        |"Fe" 1234567-28                                               
-            B1C3=>E2        |"Fe" 1234-10                                        
-            B1C4=>E2        |"Fe" 1234-10                                
-            B2C1=>E2         |"Fe" 1234-10                            
-            B2C2=>E2        |"Fe" 1234-10                        
-            B2C3=>E1        |"Fe" 1234-10                            
-            B2C4=>E2        |"Fe" 1234-10                                
+            B1C3=>E2        |"Fe" 111111-06                                       
+            B1C4=>E2        |"Fe" 111111-10                                
+            B2C1=>E2        |"Felipe" 1234-10                            
+            B2C2=>E2        |"Felipe" 1234567-28                          
+            B2C3=>E1        |"Felipe" 111111-06                              
+            B2C4=>E2        |"Felipe" 111111-10    
+
+            Casos de teste Saque
+            
+            S1Q1=>E2        |  0 10                             
+            S1Q2=>E2        |  0 20.000                                           
+            S2Q1=>E1        |  12.000 10        S= 11.990                                     
+            S2Q2=>E2        |  12.000 20.000                         
+            S3Q1=>E1        |  51.000 10        S= 50.990                            
+            S3Q2=>E1        |  51.000 20.000    S= 31.000                                  
+            S4Q1=>E1        |  100.000 10       S= 99.990                                        
+            S4Q2=>E1        |  100.000 20.000   S= 80.000                               
+            S5Q1=>E1        |  300.000  10      S= 299.990                                 
+            S5Q2=>E1        |  300.000 20.000   S= 280.000    
+
+            Casos de teste Deposito 
+
+            S1R1=>E1        |  0 100            S=100
+            S1R2=>E1        |  0 600            S=600
+            S1R3=>E1        |  0 50.000         S=50.000    
+            S2R1=>E1        |  12.000 100       S=12.100                     
+            S2R2=>E1        |  12.000 600       S=12.600    
+            S2R3=>E1        |  12.000 50.000    S=72.000   
+            S3R1=>E1        |  51.000 100       S=51.100                                                                                                           
+            S3R2=>E1        |  51.000 600       S=51.600                                                                                                      
+            S3R3=>E1        |  51.000 50.000    S=101.000                                                                                                        
+            S4R1=>E1        |  100.000 100      S=100.100                                                                                                      
+            S4R2=>E1        |  100.000 600      S=100.600                                                                                                      
+            S4R3=>E1        |  100.000 50.000   S=150.000                                                                                                         
+            S5R1=>E1        |  300.000 100      S=300.100                                                                                                      
+            S5R2=>E1        |  300.000 600      S=300.600                                                                                                      
+            S5R3=>E1        |  300.000 50.000   S=350.000                                                                                                         
+            
+               Casos de teste Deposito&Classes
+            A1K1=> A1         |   Classificação Prata, com saldo atual de     50.000>K>=0                                                                                                                  
+            A1K2=> A2         |   Classificação Ouro, com saldo atual de     200.000>K>=50.000                                                                                                                   
+            A1K3=> A2         |   Classificação Ouro, com saldo atual de     K>=200.000                                                                                                                   
+            A2K1=> A2         |   Classificação Ouro, com saldo atual de     200.000>K>=50.000                                                                                                                       
+            A2K2=> A2         |   Classificação Ouro, com saldo atual de     200.000>K>=50.000                                                                                                                       
+            A2K3=> A3         |   Classificação Platina, com saldo atual de     K>=200.000                                                                                                                        
+            A3K1=> A3         |   Classificação Platina, com saldo atual de     K>=200.000                                                                                                                        
+            A3K2=> A3         |   Classificação Platina, com saldo atual de     K>=200.000                                                                                                                       
+            A3K3=> A3         |   Classificação Platina, com saldo atual de     K>=200.000                                                                                                                       
+
+                                           
+            
+            
+
+
+
             
 
 
